@@ -21,5 +21,11 @@ namespace KP_AK_Wisielec
             picker_category.ItemsSource = categories;
             picker_category.SelectedItem = categories[0];
         }
+
+        private void GameStart_Clicked(object sender, EventArgs e)
+        {
+            if (picker_category.SelectedItem == null) return;
+            Navigation.PushAsync(new GamePage(picker_category.SelectedItem.ToString()));
+        }
     }
 }

@@ -12,7 +12,7 @@
             Text="Wybierz kategorie"/>
         <Picker x:Name="picker_category" Margin="0,0,0,30"/>
         <Button
-            Background=""
+            Background="green"
             FontAttributes="Bold"
             CornerRadius="10"
             TextColor="White"
