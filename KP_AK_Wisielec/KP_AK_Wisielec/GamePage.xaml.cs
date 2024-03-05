@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,5 +45,12 @@ namespace KP_AK_Wisielec
 
             }
         }
+
+        private void LetterButton_Clicked(object sendr,EventArgs e)
+        {
+            var button = (Button)sender;
+
+        }
+
     }
 }
