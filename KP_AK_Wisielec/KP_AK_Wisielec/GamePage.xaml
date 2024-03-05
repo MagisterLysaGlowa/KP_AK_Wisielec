@@ -9,7 +9,7 @@
                          Grid.Row="0"/>
             <Label x:Name="mistakes_label" 
                    Grid.Row="1" 
-                   TextColor="Black"/>
+                   TextColor="Red"/>
             
             <Image Source="s0.jpg" 
                    WidthRequest="300" 

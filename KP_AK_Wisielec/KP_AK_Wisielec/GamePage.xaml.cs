@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KP_AK_Wisielec.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -18,10 +19,36 @@ namespace KP_AK_Wisielec
         string hidden_password = "";
         string category_name = "";
         int mistakes = 0;
+        List<PasswordModel> passwords = new List<PasswordModel>()
+        {
+            new PasswordModel("cow,","animal"),
+            new PasswordModel("cat,","animal"),
+            new PasswordModel("dog,","animal"),
+            new PasswordModel("hammer,","item"),
+            new PasswordModel("drill,","item"),
+            new PasswordModel("fork,","item"),
+            new PasswordModel("rose,","plant"),
+            new PasswordModel("apple,","plant"),
+            new PasswordModel("pear,","plant"),
+            new PasswordModel("los angeles,","city"),
+            new PasswordModel("new york,","city"),
+            new PasswordModel("warsaw,","city"),
+        };
         public GamePage(string category_name)
         {
             InitializeComponent();
             this.category_name = category_name;
+            GenerateButtons();
+            hidden_password = GetRandomPassword();
+        }
+
+        private string GetRandomPassword()
+        {
+            Random random = new Random();
+            var passwords_list = passwords.Where(x => x.Category == category_name).ToList();
+            int randomIndex = random.Next(0,passwords_list.Count);
+            PasswordModel model = passwords_list[randomIndex];
+            return model.Password;
         }
 
         private void GenerateButtons()
@@ -38,7 +65,7 @@ namespace KP_AK_Wisielec
                     BackgroundColor = Color.Transparent,
                     FontAttributes = FontAttributes.Bold,
                 };
-
+                button.Clicked += LetterButton_Clicked;
                 Grid.SetColumn(button, i % 7);
                 Grid.SetRow(button, i / 7);
                 button_grid.Children.Add(button);
@@ -49,7 +76,16 @@ namespace KP_AK_Wisielec
         private void LetterButton_Clicked(object sender,EventArgs e)
         {
             var button = (Button)sender;
-
+            if (SetLettersInGuess(button.Text))
+            {
+                button.BorderColor = Color.Green;
+                button.TextColor = Color.Green;
+            }
+            else
+            {
+                button.BorderColor = Color.Red;
+                button.TextColor = Color.Red;
+            }
         }
 
         private bool SetLettersInGuess(string letter)
@@ -73,6 +109,7 @@ namespace KP_AK_Wisielec
 
             return any_correct;
         }
+
 
         private void SetPasswordInvisible()
         {
@@ -100,6 +137,39 @@ namespace KP_AK_Wisielec
         private void BackToMainMenu(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+        
+        private void CheckEndGame()
+        {
+            if(password_guess.ToUpper() == hidden_password.ToUpper())
+            {
+                var button = new Button()
+                {
+                    Text = "Wroc do menu",
+                    BorderColor = Color.Green,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    CornerRadius = 20,
+                };
+
+                button_area.Children.Add(button);
+                button_grid.IsEnabled = false;
+            }
+
+            if (mistakes >= 9)
+            {
+                var button = new Button()
+                {
+                    Text = "Wroc do menu",
+                    BorderColor = Color.Red,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    CornerRadius = 20,
+                };
+
+                button_area.Children.Add(button);
+                button_grid.IsEnabled = false;
+            }
         }
     }
 }
