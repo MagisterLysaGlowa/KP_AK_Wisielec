@@ -24,7 +24,9 @@
                    HorizontalTextAlignment="Center"/>
 
             <Grid x:Name="button_grid" 
-                  Padding="5"/>
+                  Padding="5"
+                  ColumnDefinitions="*,*,*,*,*,*,*"
+                  RowDefinitions="*,*,*,*"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
