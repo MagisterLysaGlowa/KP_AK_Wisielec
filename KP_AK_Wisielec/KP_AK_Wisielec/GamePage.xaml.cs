@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KP_AK_Wisielec.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -18,6 +19,21 @@ namespace KP_AK_Wisielec
         string hidden_password = "";
         string category_name = "";
         int mistakes = 0;
+        List<PasswordModel> passwords = new List<PasswordModel>()
+        {
+            new PasswordModel("cow,","animal"),
+            new PasswordModel("cat,","animal"),
+            new PasswordModel("dog,","animal"),
+            new PasswordModel("hammer,","item"),
+            new PasswordModel("drill,","item"),
+            new PasswordModel("fork,","item"),
+            new PasswordModel("rose,","plant"),
+            new PasswordModel("apple,","plant"),
+            new PasswordModel("pear,","plant"),
+            new PasswordModel("los angeles,","city"),
+            new PasswordModel("new york,","city"),
+            new PasswordModel("warsaw,","city"),
+        };
         public GamePage(string category_name)
         {
             InitializeComponent();
