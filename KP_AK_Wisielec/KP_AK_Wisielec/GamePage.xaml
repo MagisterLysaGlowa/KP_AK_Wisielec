@@ -7,7 +7,8 @@
         <Grid RowDefinitions="auto,auto,auto,auto,250"
               VerticalOptions="Center">
             <StackLayout x:Name="button_area"
-                         Grid.Row="0" HeightRequest="60"/>
+                         Grid.Row="0" HeightRequest="60"
+                         Padding="10,0,10,0"/>
             <Label x:Name="mistakes_label" 
                    Grid.Row="1" 
                    TextColor="Red" 
