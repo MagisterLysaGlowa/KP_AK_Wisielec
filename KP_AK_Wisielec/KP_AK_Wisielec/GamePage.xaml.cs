@@ -110,6 +110,35 @@ namespace KP_AK_Wisielec
             return any_correct;
         }
 
+
+        private void SetPasswordInvisible()
+        {
+            for (int i = 0;i < hidden_password.Length;i++)
+            {
+                if (hidden_password[i] == ' ')
+                {
+                    password_guess += "_";
+                }
+                else
+                {
+                    password_guess += ' ';
+                }
+            }
+            password_label.Text = password_guess;
+        }
+
+        private void DisplayInfo()
+        {
+            password_label.Text = password_guess;
+            hangmen_image_container.Source = $"s{mistakes}.jpg";
+            mistakes_label.Text = "mistakes: " + mistakes;
+        }
+
+        private void BackToMainMenu(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+        
         private void CheckEndGame()
         {
             if(password_guess.ToUpper() == hidden_password.ToUpper())
