@@ -172,6 +172,7 @@ namespace KP_AK_Wisielec
                 button.Clicked += BackToMainMenu;
                 button_area.Children.Add(button);
                 button_grid.IsEnabled = false;
+                password_label.Text = hidden_password.ToUpper();
             }
         }
     }
