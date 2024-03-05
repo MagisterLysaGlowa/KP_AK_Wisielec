@@ -54,7 +54,7 @@ namespace KP_AK_Wisielec
                     BackgroundColor = Color.Transparent,
                     FontAttributes = FontAttributes.Bold,
                 };
-
+                button.Clicked += LetterButton_Clicked;
                 Grid.SetColumn(button, i % 7);
                 Grid.SetRow(button, i / 7);
                 button_grid.Children.Add(button);
@@ -65,7 +65,16 @@ namespace KP_AK_Wisielec
         private void LetterButton_Clicked(object sender,EventArgs e)
         {
             var button = (Button)sender;
-
+            if (SetLettersInGuess(button.Text))
+            {
+                button.BorderColor = Color.Green;
+                button.TextColor = Color.Green;
+            }
+            else
+            {
+                button.BorderColor = Color.Red;
+                button.TextColor = Color.Red;
+            }
         }
 
         private bool SetLettersInGuess(string letter)
