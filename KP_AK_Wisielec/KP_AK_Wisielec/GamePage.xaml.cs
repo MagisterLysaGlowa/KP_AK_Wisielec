@@ -38,6 +38,17 @@ namespace KP_AK_Wisielec
         {
             InitializeComponent();
             this.category_name = category_name;
+            GenerateButtons();
+            hidden_password = GetRandomPassword();
+        }
+
+        private string GetRandomPassword()
+        {
+            Random random = new Random();
+            var passwords_list = passwords.Where(x => x.Category == category_name).ToList();
+            int randomIndex = random.Next(0,passwords_list.Count);
+            PasswordModel model = passwords_list[randomIndex];
+            return model.Password;
         }
 
         private void GenerateButtons()
