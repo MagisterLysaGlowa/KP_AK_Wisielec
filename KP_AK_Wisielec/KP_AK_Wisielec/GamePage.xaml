@@ -14,7 +14,8 @@
             <Image Source="s0.jpg" 
                    WidthRequest="300" 
                    HeightRequest="300" 
-                   Grid.Row="2"/>
+                   Grid.Row="2"
+                   x:Name="hangmen_image_container"/>
 
             <Label x:Name="password_label"
                    TextColor="Black"

@@ -106,7 +106,8 @@ namespace KP_AK_Wisielec
             {
                 mistakes++;
             }
-
+            DisplayInfo();
+            CheckEndGame();
             return any_correct;
         }
 
@@ -152,6 +153,7 @@ namespace KP_AK_Wisielec
                     CornerRadius = 20,
                 };
 
+                button.Clicked += BackToMainMenu;
                 button_area.Children.Add(button);
                 button_grid.IsEnabled = false;
             }
@@ -166,7 +168,7 @@ namespace KP_AK_Wisielec
                     FontAttributes = FontAttributes.Bold,
                     CornerRadius = 20,
                 };
-
+                button.Clicked += BackToMainMenu;
                 button_area.Children.Add(button);
                 button_grid.IsEnabled = false;
             }
