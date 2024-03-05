@@ -22,5 +22,27 @@ namespace KP_AK_Wisielec
             InitializeComponent();
             this.category_name = category_name;
         }
+
+        private void GenerateButtons()
+        {
+            for (int i = 0; i < button_characters.Length; i++)
+            {
+                var button = new Button()
+                {
+                    Text = button_characters[i].ToString(),
+                    CornerRadius = 15,
+                    TextColor = Color.Black,
+                    BorderWidth = 3,
+                    BorderColor = Color.Black,
+                    BackgroundColor = Color.Transparent,
+                    FontAttributes = FontAttributes.Bold,
+                };
+
+                Grid.SetColumn(button, i % 7);
+                Grid.SetRow(button, i / 7);
+                button_grid.Children.Add(button);
+
+            }
+        }
     }
 }
