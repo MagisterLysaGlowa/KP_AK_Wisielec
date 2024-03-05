@@ -97,5 +97,9 @@ namespace KP_AK_Wisielec
             mistakes_label.Text = "mistakes: " + mistakes;
         }
 
+        private void BackToMainMenu(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
