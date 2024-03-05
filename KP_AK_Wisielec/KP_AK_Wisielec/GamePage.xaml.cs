@@ -46,10 +46,32 @@ namespace KP_AK_Wisielec
             }
         }
 
-        private void LetterButton_Clicked(object sendr,EventArgs e)
+        private void LetterButton_Clicked(object sender,EventArgs e)
         {
             var button = (Button)sender;
 
+        }
+
+        private bool SetLettersInGuess(string letter)
+        {
+            bool any_correct = false;
+            for (int i = 0; i < hidden_password.Length; i++)
+            {
+                if (hidden_password.ToUpper()[i] == letter.ToUpper()[0])
+                {
+                    StringBuilder stringBuilder = new StringBuilder(password_guess);
+                    stringBuilder[i] = letter[0];
+                    password_guess = stringBuilder.ToString();
+                    any_correct = true;
+                }
+            }
+
+            if (!any_correct)
+            {
+                mistakes++;
+            }
+
+            return any_correct;
         }
 
     }
