@@ -90,5 +90,12 @@ namespace KP_AK_Wisielec
             password_label.Text = password_guess;
         }
 
+        private void DisplayInfo()
+        {
+            password_label.Text = password_guess;
+            hangmen_image_container.Source = $"s{mistakes}.jpg";
+            mistakes_label.Text = "mistakes: " + mistakes;
+        }
+
     }
 }
