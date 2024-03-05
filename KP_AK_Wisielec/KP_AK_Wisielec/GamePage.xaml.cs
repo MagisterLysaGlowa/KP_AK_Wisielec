@@ -74,5 +74,21 @@ namespace KP_AK_Wisielec
             return any_correct;
         }
 
+        private void SetPasswordInvisible()
+        {
+            for (int i = 0;i < hidden_password.Length;i++)
+            {
+                if (hidden_password[i] == ' ')
+                {
+                    password_guess += "_";
+                }
+                else
+                {
+                    password_guess += ' ';
+                }
+            }
+            password_label.Text = password_guess;
+        }
+
     }
 }
