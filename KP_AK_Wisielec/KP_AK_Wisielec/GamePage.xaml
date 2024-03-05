@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KP_AK_Wisielec.GamePage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,auto,auto,auto,250"
+              VerticalOptions="Center">
+            <StackLayout x:Name="button_area"
+                         Grid.Row="0"/>
+            <Label x:Name="mistakes_label" 
+                   Grid.Row="1" 
+                   TextColor="Black"/>
+            
+            <Image Source="s0.jpg" 
+                   WidthRequest="300" 
+                   HeightRequest="300" 
+                   Grid.Row="2"/>
+
+            <Label x:Name="password_label"
+                   TextColor="Black"
+                   CharacterSpacing="5"
+                   FontSize="25"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <Grid x:Name="button_grid" 
+                  Padding="5"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
