@@ -99,5 +99,37 @@ namespace KP_AK_Wisielec
             return any_correct;
         }
 
+        private void CheckEndGame()
+        {
+            if(password_guess.ToUpper() == hidden_password.ToUpper())
+            {
+                var button = new Button()
+                {
+                    Text = "Wroc do menu",
+                    BorderColor = Color.Green,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    CornerRadius = 20,
+                };
+
+                button_area.Children.Add(button);
+                button_grid.IsEnabled = false;
+            }
+
+            if (mistakes >= 9)
+            {
+                var button = new Button()
+                {
+                    Text = "Wroc do menu",
+                    BorderColor = Color.Red,
+                    TextColor = Color.White,
+                    FontAttributes = FontAttributes.Bold,
+                    CornerRadius = 20,
+                };
+
+                button_area.Children.Add(button);
+                button_grid.IsEnabled = false;
+            }
+        }
     }
 }
