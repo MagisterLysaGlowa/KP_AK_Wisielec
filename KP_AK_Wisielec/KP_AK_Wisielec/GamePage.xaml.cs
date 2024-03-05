@@ -21,18 +21,18 @@ namespace KP_AK_Wisielec
         int mistakes = 0;
         List<PasswordModel> passwords = new List<PasswordModel>()
         {
-            new PasswordModel("cow,","animal"),
-            new PasswordModel("cat,","animal"),
-            new PasswordModel("dog,","animal"),
-            new PasswordModel("hammer,","item"),
-            new PasswordModel("drill,","item"),
-            new PasswordModel("fork,","item"),
-            new PasswordModel("rose,","plant"),
-            new PasswordModel("apple,","plant"),
-            new PasswordModel("pear,","plant"),
-            new PasswordModel("los angeles,","city"),
-            new PasswordModel("new york,","city"),
-            new PasswordModel("warsaw,","city"),
+            new PasswordModel("cow","animal"),
+            new PasswordModel("cat","animal"),
+            new PasswordModel("dog","animal"),
+            new PasswordModel("hammer","item"),
+            new PasswordModel("drill","item"),
+            new PasswordModel("fork","item"),
+            new PasswordModel("rose","plant"),
+            new PasswordModel("apple","plant"),
+            new PasswordModel("pear","plant"),
+            new PasswordModel("los angeles","city"),
+            new PasswordModel("new york","city"),
+            new PasswordModel("warsaw","city"),
         };
         public GamePage(string category_name)
         {
@@ -40,6 +40,7 @@ namespace KP_AK_Wisielec
             this.category_name = category_name;
             GenerateButtons();
             hidden_password = GetRandomPassword();
+            SetPasswordInvisible();
         }
 
         private string GetRandomPassword()
@@ -106,7 +107,8 @@ namespace KP_AK_Wisielec
             {
                 mistakes++;
             }
-
+            DisplayInfo();
+            CheckEndGame();
             return any_correct;
         }
 
@@ -115,7 +117,7 @@ namespace KP_AK_Wisielec
         {
             for (int i = 0;i < hidden_password.Length;i++)
             {
-                if (hidden_password[i] == ' ')
+                if (hidden_password[i] != ' ')
                 {
                     password_guess += "_";
                 }
@@ -146,12 +148,13 @@ namespace KP_AK_Wisielec
                 var button = new Button()
                 {
                     Text = "Wroc do menu",
-                    BorderColor = Color.Green,
+                    BackgroundColor = Color.Green,
                     TextColor = Color.White,
                     FontAttributes = FontAttributes.Bold,
                     CornerRadius = 20,
                 };
 
+                button.Clicked += BackToMainMenu;
                 button_area.Children.Add(button);
                 button_grid.IsEnabled = false;
             }
@@ -161,12 +164,12 @@ namespace KP_AK_Wisielec
                 var button = new Button()
                 {
                     Text = "Wroc do menu",
-                    BorderColor = Color.Red,
+                    BackgroundColor = Color.Red,
                     TextColor = Color.White,
                     FontAttributes = FontAttributes.Bold,
                     CornerRadius = 20,
                 };
-
+                button.Clicked += BackToMainMenu;
                 button_area.Children.Add(button);
                 button_grid.IsEnabled = false;
             }
